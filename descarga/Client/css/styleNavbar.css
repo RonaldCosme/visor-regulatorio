@@ -1,0 +1,260 @@
+<style>
+  /* Client/css/styleNavbar.css.html */
+
+  /* Navbar General */
+  .app-navbar {
+    background-color: var(--bbva-white);
+    border-bottom: 1px solid var(--bbva-grey-200);
+    height: var(--app-navbar-height);
+    z-index: 1030; 
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    padding-top: 0.3rem;
+    padding-bottom: 0.3rem;
+  }
+  .app-navbar.navbar-scrolled { /* Clase que se podría añadir con JS al hacer scroll */
+    box-shadow: var(--shadow-light);
+  }
+  .app-navbar .navbar-brand {
+    color: var(--text-on-white-bg);
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: opacity 0.2s ease;
+  }
+  .app-navbar .navbar-brand:hover {
+    opacity: 0.85;
+  }
+  .app-navbar .navbar-logo {
+    height: 26px;
+    transition: transform 0.3s ease;
+  }
+  .app-navbar .navbar-brand:hover .navbar-logo {
+    transform: scale(1.05);
+  }
+  .app-navbar .navbar-toggler {
+    border: 1px solid var(--bbva-grey-300);
+    padding: 0.3rem 0.6rem;
+  }
+  .app-navbar .navbar-toggler i {
+    color: var(--text-on-white-bg); /* O el color principal de BBVA */
+    font-size: 1.4rem;
+  }
+  .app-navbar .navbar-toggler:focus {
+    box-shadow: 0 0 0 0.15rem rgba(0, 68, 129, 0.2);
+  }
+  .app-navbar .nav-link {
+    color: var(--bbva-grey-500);
+    font-weight: 500;
+    padding: 0.4rem 0.8rem;
+    border-radius: var(--border-radius-base);
+    transition: background-color 0.2s ease, color 0.2s ease, transform 0.15s ease;
+    margin: 0 0.15rem;
+    font-size: var(--font-size-sm);
+    display: flex;
+    align-items: center;
+  }
+  .app-navbar .nav-link i {
+    font-size: 1rem;
+    margin-right: 6px;
+    vertical-align: middle;
+    color: var(--bbva-medium-blue);
+    transition: color 0.2s ease;
+  }
+  .app-navbar .nav-link:hover,
+  .app-navbar .nav-link:focus {
+    color: var(--primary-color);
+    background-color: var(--bbva-grey-100);
+    transform: translateY(-1px);
+  }
+  .app-navbar .nav-link.active {
+    color: var(--primary-color);
+    background-color: var(--bbva-sky-light-blue); 
+    font-weight: 600;
+  }
+   .app-navbar .nav-link.active i {
+    color: var(--primary-color);
+  }
+  .app-navbar .nav-link .user-icon { /* Específico para el ícono de usuario si es diferente */
+    font-size: 1.3rem; /* Ajusta si es necesario */
+  }
+
+  /* Estilos para el buscador en el Navbar */
+  .app-navbar .search-form {
+    min-width: 200px;
+    max-width: 300px;
+    width: 100%; 
+  }
+  .app-navbar .search-input {
+    border-radius: var(--border-radius-base) 0 0 var(--border-radius-base);
+    border: 1px solid var(--bbva-grey-300);
+    background-color: var(--bbva-white);
+    color: var(--text-primary-color);
+    font-size: var(--font-size-sm);
+    padding: 0.4rem 0.8rem;
+  }
+  .app-navbar .search-input::placeholder {
+    color: var(--bbva-grey-400);
+  }
+  .app-navbar .search-input:focus {
+    background-color: var(--bbva-white);
+    border-color: var(--bbva-medium-blue);
+    box-shadow: 0 0 0 0.15rem rgba(25, 115, 184, 0.2);
+    color: var(--text-primary-color);
+  }
+  .app-navbar .search-button {
+    border-radius: 0 var(--border-radius-base) var(--border-radius-base) 0;
+    border: 1px solid var(--bbva-medium-blue);
+    background-color: var(--bbva-medium-blue);
+    color: var(--bbva-white);
+    padding: 0.4rem 0.8rem;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+  }
+  .app-navbar .search-button:hover {
+    background-color: var(--bbva-core-dark-blue);
+    border-color: var(--bbva-core-dark-blue);
+  }
+
+  /* Dropdown Menus en Navbar */
+  .app-navbar .dropdown-menu { 
+    background-color: var(--bbva-white);
+    border: 1px solid var(--bbva-grey-200);
+    box-shadow: var(--shadow-medium);
+    border-radius: var(--border-radius-base); 
+    margin-top: 0.4rem;
+    padding-top: 0.4rem;
+    padding-bottom: 0.4rem;
+    min-width: 220px;
+    font-size: var(--font-size-sm);
+    animation-name: fadeIn; /* Animación suave para el dropdown */
+    animation-duration: 0.2s;
+  }
+  .app-navbar .dropdown-menu .dropdown-item {
+    color: var(--text-primary-color);
+    padding: 0.5rem 1rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+  .app-navbar .dropdown-menu .dropdown-item i {
+    font-size: 0.9rem;
+    margin-right: 8px;
+    color: var(--bbva-medium-blue);
+    width: 18px;
+    text-align: center;
+    transition: color 0.2s ease;
+  }
+  .app-navbar .dropdown-menu .dropdown-item:hover,
+  .app-navbar .dropdown-menu .dropdown-item:focus {
+    background-color: var(--bbva-grey-100);
+    color: var(--primary-color);
+  }
+   .app-navbar .dropdown-menu .dropdown-item:hover i,
+   .app-navbar .dropdown-menu .dropdown-item:focus i {
+    color: var(--primary-color);
+  }
+  .app-navbar .dropdown-menu .dropdown-item.active,
+  .app-navbar .dropdown-menu .dropdown-item:active {
+    background-color: var(--bbva-sky-light-blue);
+    color: var(--primary-color);
+  }
+  .app-navbar .dropdown-menu .dropdown-item.active i,
+  .app-navbar .dropdown-menu .dropdown-item:active i {
+    color: var(--primary-color);
+  }
+  .app-navbar .dropdown-divider {
+    border-top-color: var(--bbva-grey-200);
+  }
+  .app-navbar .user-info-dropdown { /* Estilo para la cabecera del dropdown de usuario */
+    background-color: var(--bbva-grey-100);
+    border-bottom: 1px solid var(--bbva-grey-200);
+    padding: 0.6rem 1rem; /* Ajustar padding */
+    line-height: 1.3;
+  }
+  .app-navbar .user-info-dropdown strong {
+    color: var(--bbva-core-dark-blue);
+    font-size: 0.9rem;
+  }
+  .app-navbar .user-info-dropdown small {
+    color: var(--text-secondary-color);
+    font-size: var(--font-size-xs);
+  }
+   .app-navbar .user-info-dropdown .badge {
+    font-size: var(--font-size-xs);
+    padding: 0.25em 0.5em;
+   }
+
+  /* Ajustes Responsivos para Navbar (cuando se colapsa) */
+  @media (max-width: 991.98px) { 
+    .app-navbar .navbar-collapse {
+      background-color: var(--bbva-white);
+      margin-top: 0.3rem;
+      border-radius: 0 0 var(--border-radius-base) var(--border-radius-base);
+      box-shadow: var(--shadow-medium);
+      padding: 0.4rem 0;
+      position: absolute;
+      top: calc(var(--app-navbar-height) - 1px); /* Alinear con borde inferior del navbar */
+      left: 0;
+      right: 0;
+      z-index: 1029; /* Debajo del navbar principal pero encima del contenido */
+      border-top: 1px solid var(--bbva-grey-200);
+    }
+    .app-navbar .nav-link {
+      padding: 0.7rem 1rem;
+      margin: 0.15rem 0.4rem;
+      color: var(--bbva-grey-700); /* Texto más oscuro para mejor contraste en menú colapsado */
+    }
+     .app-navbar .nav-link i {
+       color: var(--bbva-medium-blue); /* Mantener color de íconos */
+     }
+    .app-navbar .nav-link:hover,
+    .app-navbar .nav-link:focus {
+      background-color: var(--bbva-grey-100);
+      color: var(--primary-color);
+    }
+     .app-navbar .nav-link.active {
+        background-color: var(--bbva-sky-light-blue);
+        color: var(--primary-color);
+     }
+
+    /* Ajustes para el buscador y dropdowns en modo colapsado */
+    .app-navbar .search-form {
+        margin: 0.6rem 0.8rem !important; /* Añadir margen para separarlo */
+        width: auto; /* Ocupar el ancho disponible menos los márgenes */
+        max-width: none;
+    }
+    .app-navbar .dropdown-menu { /* Hacer que los dropdowns ocupen todo el ancho */
+      box-shadow: none;
+      border: none;
+      background-color: var(--bbva-white); /* Fondo consistente */
+      width: 100% !important; 
+      border-radius: 0; /* Sin bordes redondeados dentro del menú colapsado */
+      animation: none; /* Quitar animación de fade si la tuviera */
+      margin-top: 0; /* Sin margen superior */
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+    .app-navbar .dropdown-menu .dropdown-item {
+      color: var(--text-primary-color);
+      padding-left: 1.8rem; /* Indentación para items de dropdown */
+    }
+    .app-navbar .dropdown-menu .dropdown-item:hover,
+    .app-navbar .dropdown-menu .dropdown-item:focus {
+      background-color: var(--bbva-grey-100);
+      color: var(--primary-color);
+    }
+     .app-navbar .user-info-dropdown { /* Cabecera del dropdown de usuario en modo colapsado */
+        background-color: var(--bbva-grey-100);
+        border-bottom: 1px solid var(--bbva-grey-200);
+        margin: 0; 
+        padding: 0.6rem 1rem;
+        padding-left: 1.8rem; /* Indentación consistente */
+     }
+     .app-navbar .dropdown-menu-end .user-info-dropdown { /* Para dropdowns alineados a la derecha */
+        border-radius: 0;
+     }
+     .app-navbar .user-info-dropdown:first-child { /* Quitar border-radius superior si es el primer item */
+        border-top-left-radius: 0; 
+        border-top-right-radius: 0;
+     }
+  }
+</style>
