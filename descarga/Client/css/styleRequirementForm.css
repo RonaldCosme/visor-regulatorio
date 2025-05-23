@@ -1,0 +1,377 @@
+<style>
+  /* Client/css/styleRequirementForm.css.html */
+  /* Estilos específicos para el formulario de requerimientos */
+
+  .requirement-form-view {
+    animation-duration: 0.5s;
+  }
+
+  .requirement-form-view .card {
+    border: none;
+    overflow: hidden;
+  }
+
+  .requirement-form-view .card-header {
+    background: linear-gradient(135deg, var(--bbva-medium-blue) 0%, var(--bbva-core-dark-blue) 100%);
+    border: none;
+    padding: 1.25rem 1.5rem;
+  }
+
+  .requirement-form-view .card-header h4 {
+    font-weight: 600;
+    margin: 0;
+  }
+
+  .requirement-form-view .card-body {
+    background-color: var(--bbva-white);
+  }
+
+  /* Estilos para fieldsets y leyendas */
+  .requirement-form-view fieldset {
+    border: 1px solid var(--bbva-grey-200);
+    border-radius: var(--border-radius-base);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    background-color: #fafbfc;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .requirement-form-view fieldset:hover {
+    border-color: var(--bbva-sky-blue);
+    box-shadow: 0 2px 8px rgba(91, 190, 255, 0.1);
+  }
+
+  .requirement-form-view legend {
+    width: auto;
+    margin-bottom: 0;
+    padding: 0.5rem 1rem;
+    background-color: var(--bbva-white);
+    border: 1px solid var(--bbva-sky-blue);
+    border-radius: 20px;
+    font-size: 1rem !important;
+    font-weight: 600;
+    color: var(--bbva-core-dark-blue);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Estilos para labels */
+  .requirement-form-view .form-label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--bbva-grey-700);
+    margin-bottom: 0.4rem;
+    display: flex;
+    align-items: center;
+  }
+
+  .requirement-form-view .form-label .text-danger {
+    margin-left: 0.25rem;
+    font-size: 0.9rem;
+  }
+
+  /* Estilos para inputs y selects */
+  .requirement-form-view .form-control,
+  .requirement-form-view .form-select {
+    border-radius: var(--border-radius-base);
+    border: 1px solid var(--bbva-grey-300);
+    padding: 0.6rem 0.8rem;
+    font-size: 0.85rem;
+    transition: all 0.2s ease-in-out;
+    background-color: var(--bbva-white);
+  }
+
+  .requirement-form-view .form-control:focus,
+  .requirement-form-view .form-select:focus {
+    border-color: var(--bbva-medium-blue);
+    box-shadow: 0 0 0 0.2rem rgba(25, 115, 184, 0.15);
+    background-color: var(--bbva-white);
+  }
+
+  .requirement-form-view .form-control-sm,
+  .requirement-form-view .form-select-sm {
+    padding: 0.45rem 0.65rem;
+    font-size: 0.8rem;
+  }
+
+  /* Inputs de solo lectura */
+  .requirement-form-view .form-control[readonly] {
+    background-color: var(--bbva-grey-100);
+    color: var(--bbva-grey-600);
+    cursor: not-allowed;
+  }
+
+  /* Textarea */
+  .requirement-form-view textarea.form-control {
+    resize: vertical;
+    min-height: 80px;
+  }
+
+  /* Datalist styling */
+  .requirement-form-view input[list] {
+    position: relative;
+  }
+
+  /* Sección de sistemas destacada */
+  .requirement-form-view .bg-light-bbva {
+    background-color: var(--bbva-aqua-white) !important;
+    border-radius: var(--border-radius-base);
+  }
+
+  .requirement-form-view .border-primary-bbva {
+    border-color: var(--bbva-medium-blue) !important;
+    border-width: 3px !important;
+  }
+
+  /* Estilos para validación */
+  .requirement-form-view .was-validated .form-control:invalid,
+  .requirement-form-view .form-control.is-invalid {
+    border-color: var(--bbva-red-dark);
+    background-color: var(--bbva-red-light);
+  }
+
+  .requirement-form-view .was-validated .form-control:valid,
+  .requirement-form-view .form-control.is-valid {
+    border-color: var(--bbva-green-dark);
+    background-color: var(--bbva-green-light);
+  }
+
+  .requirement-form-view .was-validated .form-select:invalid,
+  .requirement-form-view .form-select.is-invalid {
+    border-color: var(--bbva-red-dark);
+    background-color: var(--bbva-red-light);
+  }
+
+  .requirement-form-view .was-validated .form-select:valid,
+  .requirement-form-view .form-select.is-valid {
+    border-color: var(--bbva-green-dark);
+    background-color: var(--bbva-green-light);
+  }
+
+  .requirement-form-view .invalid-feedback {
+    display: block;
+    color: var(--bbva-red-dark);
+    font-size: 0.75rem;
+    font-weight: 500;
+    margin-top: 0.25rem;
+  }
+
+  .requirement-form-view .valid-feedback {
+    display: block;
+    color: var(--bbva-green-dark);
+    font-size: 0.75rem;
+    font-weight: 500;
+    margin-top: 0.25rem;
+  }
+
+  /* Estilos para botones del formulario */
+  .requirement-form-view .btn-primary-bbva {
+    background: linear-gradient(135deg, var(--bbva-medium-blue) 0%, var(--bbva-core-dark-blue) 100%);
+    border: none;
+    color: var(--bbva-white);
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(25, 115, 184, 0.2);
+  }
+
+  .requirement-form-view .btn-primary-bbva:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(25, 115, 184, 0.3);
+    background: linear-gradient(135deg, var(--bbva-core-dark-blue) 0%, var(--bbva-navy) 100%);
+  }
+
+  .requirement-form-view .btn-primary-bbva:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 8px rgba(25, 115, 184, 0.2);
+  }
+
+  .requirement-form-view .btn-primary-bbva:disabled {
+    background: var(--bbva-grey-300);
+    color: var(--bbva-grey-500);
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+  }
+
+  .requirement-form-view .btn-outline-secondary {
+    border-color: var(--bbva-grey-400);
+    color: var(--bbva-grey-600);
+    font-weight: 500;
+    padding: 0.75rem 1.5rem;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+  }
+
+  .requirement-form-view .btn-outline-secondary:hover {
+    background-color: var(--bbva-grey-100);
+    border-color: var(--bbva-grey-500);
+    color: var(--bbva-grey-700);
+    transform: translateY(-1px);
+  }
+
+  .requirement-form-view .btn-outline-warning {
+    border-color: #FFA000;
+    color: #FFA000;
+    font-weight: 500;
+    transition: all 0.3s ease;
+  }
+
+  .requirement-form-view .btn-outline-warning:hover {
+    background-color: #FFA000;
+    border-color: #FFA000;
+    color: white;
+    transform: translateY(-1px);
+  }
+
+  /* Alert de modo edición */
+  .requirement-form-view .alert-info {
+    background: linear-gradient(135deg, var(--bbva-sky-light-blue) 0%, #e3f2fd 100%);
+    border: 1px solid var(--bbva-sky-blue);
+    color: var(--bbva-core-dark-blue);
+    border-radius: var(--border-radius-base);
+  }
+
+  .requirement-form-view .alert-info i {
+    color: var(--bbva-medium-blue);
+  }
+
+  /* Form text y ayudas */
+  .requirement-form-view .form-text {
+    font-size: 0.75rem;
+    color: var(--bbva-grey-500);
+    margin-top: 0.25rem;
+  }
+
+  .requirement-form-view .form-text.text-danger {
+    color: var(--bbva-red-dark) !important;
+    font-weight: 500;
+  }
+
+  /* Estilos responsivos */
+  @media (max-width: 768px) {
+    .requirement-form-view .card-body {
+      padding: 1.5rem;
+    }
+
+    .requirement-form-view fieldset {
+      padding: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .requirement-form-view legend {
+      font-size: 0.9rem !important;
+      padding: 0.4rem 0.8rem;
+    }
+
+    .requirement-form-view .btn {
+      padding: 0.6rem 1.2rem;
+      font-size: 0.85rem;
+    }
+
+    .requirement-form-view .form-label {
+      font-size: 0.8rem;
+    }
+
+    .requirement-form-view .form-control,
+    .requirement-form-view .form-select {
+      font-size: 0.8rem;
+    }
+  }
+
+  /* Estilos para estados específicos del formulario */
+  .requirement-form-view .estado-terminado {
+    background-color: var(--bbva-green-light);
+    border-color: var(--bbva-green-dark);
+  }
+
+  .requirement-form-view .estado-vencido {
+    background-color: var(--bbva-red-light);
+    border-color: var(--bbva-red-dark);
+  }
+
+  .requirement-form-view .estado-prorroga {
+    background-color: #fff3cd;
+    border-color: #FFA000;
+  }
+
+  /* Indicadores visuales */
+  .requirement-form-view .required-field {
+    position: relative;
+  }
+
+  .requirement-form-view .required-field::after {
+    content: "";
+    position: absolute;
+    left: -8px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 3px;
+    height: 100%;
+    background-color: var(--bbva-medium-blue);
+    border-radius: 2px;
+    opacity: 0.3;
+  }
+
+  /* Animaciones sutiles */
+  .requirement-form-view .form-control:focus,
+  .requirement-form-view .form-select:focus {
+    animation: inputFocus 0.3s ease-out;
+  }
+
+  @keyframes inputFocus {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+    100% { transform: scale(1); }
+  }
+
+  /* Mejoras de accesibilidad */
+  .requirement-form-view .form-control:focus-visible,
+  .requirement-form-view .form-select:focus-visible {
+    outline: 2px solid var(--bbva-medium-blue);
+    outline-offset: 2px;
+  }
+
+  /* Estilo para campos condicionales */
+  .requirement-form-view .conditional-field {
+    transition: all 0.3s ease-in-out;
+  }
+
+  .requirement-form-view .conditional-field.v-enter-active,
+  .requirement-form-view .conditional-field.v-leave-active {
+    transition: all 0.3s ease-in-out;
+  }
+
+  .requirement-form-view .conditional-field.v-enter-from,
+  .requirement-form-view .conditional-field.v-leave-to {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  /* Spinner personalizado */
+  .requirement-form-view .spinner-border-sm {
+    width: 1rem;
+    height: 1rem;
+    border-width: 0.15em;
+  }
+
+  /* Tooltips personalizados (si se usan) */
+  .requirement-form-view [title]:hover {
+    cursor: help;
+  }
+
+  /* Estilos para progreso del formulario (si se implementa) */
+  .requirement-form-view .form-progress {
+    background-color: var(--bbva-grey-100);
+    height: 4px;
+    border-radius: 2px;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+  }
+
+  .requirement-form-view .form-progress-bar {
+    background: linear-gradient(90deg, var(--bbva-medium-blue) 0%, var(--bbva-aqua) 100%);
+    height: 100%;
+    transition: width 0.3s ease;
+  }
+</style>

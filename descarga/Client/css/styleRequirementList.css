@@ -1,0 +1,265 @@
+<style>
+  /* Client/css/styleRequirementList.css.html */
+  
+  .requirement-list-view {
+    animation-duration: 0.5s;
+  }
+
+  .requirement-list-view h3 {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+
+  /* Tarjetas KPI específicas para el listado */
+  .requirement-list-view .kpi-card {
+    background-color: var(--bbva-white);
+    border-radius: var(--border-radius-base);
+    padding: 1.2rem;
+    display: flex;
+    align-items: center;
+    box-shadow: var(--shadow-light);
+    transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+    height: 100%;
+    border-left: 4px solid transparent;
+    cursor: pointer;
+  }
+
+  .requirement-list-view .kpi-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-medium);
+  }
+
+  .requirement-list-view .kpi-card.border-primary-bbva { 
+    border-left-color: var(--bbva-medium-blue); 
+  }
+  .requirement-list-view .kpi-card.border-success-bbva { 
+    border-left-color: var(--bbva-green-dark); 
+  }
+  .requirement-list-view .kpi-card.border-warning-bbva { 
+    border-left-color: #FFA000; 
+  }
+  .requirement-list-view .kpi-card.border-danger-bbva { 
+    border-left-color: var(--bbva-red-dark); 
+  }
+
+  .requirement-list-view .kpi-icon-wrapper {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1rem;
+    flex-shrink: 0;
+  }
+
+  .requirement-list-view .kpi-icon-wrapper i {
+    color: var(--bbva-white);
+    font-size: 1.4rem;
+  }
+
+  .requirement-list-view .kpi-icon-wrapper.bg-primary-bbva { 
+    background-color: var(--bbva-medium-blue); 
+  }
+  .requirement-list-view .kpi-icon-wrapper.bg-success-bbva { 
+    background-color: var(--bbva-green-dark); 
+  }
+  .requirement-list-view .kpi-icon-wrapper.bg-warning-bbva { 
+    background-color: #FFA000; 
+  }
+  .requirement-list-view .kpi-icon-wrapper.bg-danger-bbva { 
+    background-color: var(--bbva-red-dark); 
+  }
+
+  .requirement-list-view .kpi-content .kpi-value {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--bbva-navy);
+    margin-bottom: 0.1rem;
+    line-height: 1.1;
+  }
+
+  .requirement-list-view .kpi-content .kpi-label {
+    font-size: 0.8rem;
+    color: var(--bbva-grey-500);
+    margin-bottom: 0;
+    line-height: 1.2;
+  }
+
+  /* Panel de filtros */
+  .requirement-list-view .card-body .form-label {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--bbva-grey-600);
+    margin-bottom: 0.3rem;
+  }
+
+  .requirement-list-view .input-group .form-control:focus {
+    border-color: var(--bbva-medium-blue);
+    box-shadow: 0 0 0 0.15rem rgba(25, 115, 184, 0.25);
+  }
+
+  .requirement-list-view .input-group .btn {
+    border-color: var(--bbva-grey-300);
+  }
+
+  .requirement-list-view .input-group .btn:hover {
+    background-color: var(--bbva-grey-100);
+    border-color: var(--bbva-grey-400);
+  }
+
+  /* Tabla de requerimientos */
+  .requirement-list-view .table th {
+    background-color: var(--bbva-grey-100);
+    color: var(--bbva-core-dark-blue);
+    border-bottom: 2px solid var(--bbva-medium-blue);
+    font-weight: 600;
+    font-size: 0.8rem;
+    padding: 0.8rem 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    white-space: nowrap;
+  }
+
+  .requirement-list-view .table td {
+    color: var(--text-secondary-color);
+    vertical-align: middle;
+    padding: 0.8rem 0.7rem;
+    font-size: 0.85rem;
+    border-bottom: 1px solid var(--bbva-grey-200);
+  }
+
+  .requirement-list-view .table tbody tr:hover {
+    background-color: var(--bbva-aqua-white);
+    transition: background-color 0.2s ease;
+  }
+
+  .requirement-list-view .table .badge {
+    font-size: 0.7rem;
+    padding: 0.35em 0.6em;
+    font-weight: 500;
+  }
+
+  .requirement-list-view .table .btn-group .btn {
+    padding: 0.25rem 0.4rem;
+    font-size: 0.75rem;
+    border-radius: 3px;
+  }
+
+  .requirement-list-view .table .btn-outline-primary:hover {
+    background-color: var(--bbva-medium-blue);
+    border-color: var(--bbva-medium-blue);
+  }
+
+  .requirement-list-view .table .btn-outline-danger:hover {
+    background-color: var(--bbva-red-dark);
+    border-color: var(--bbva-red-dark);
+  }
+
+  /* Estados específicos */
+  .requirement-list-view .text-danger.fw-bold {
+    color: var(--bbva-red-dark) !important;
+  }
+
+  .requirement-list-view .text-warning.fw-bold {
+    color: #FFA000 !important;
+  }
+
+  .requirement-list-view .text-success {
+    color: var(--bbva-green-dark) !important;
+  }
+
+  /* Paginación personalizada */
+  .requirement-list-view .pagination .page-link {
+    color: var(--bbva-medium-blue);
+    border-color: var(--bbva-grey-300);
+    padding: 0.4rem 0.6rem;
+    font-size: 0.8rem;
+  }
+
+  .requirement-list-view .pagination .page-link:hover {
+    background-color: var(--bbva-aqua-white);
+    border-color: var(--bbva-medium-blue);
+    color: var(--bbva-core-dark-blue);
+  }
+
+  .requirement-list-view .pagination .page-item.active .page-link {
+    background-color: var(--bbva-medium-blue);
+    border-color: var(--bbva-medium-blue);
+    color: var(--bbva-white);
+  }
+
+  /* Estados de carga y vacío */
+  .requirement-list-view .spinner-border.text-primary {
+    color: var(--bbva-medium-blue) !important;
+  }
+
+  .requirement-list-view .alert-danger {
+    background-color: var(--bbva-red-light);
+    border-color: var(--bbva-red-dark);
+    color: var(--bbva-red-dark);
+  }
+
+  .requirement-list-view .alert-light {
+    background-color: var(--bbva-grey-100);
+    border-color: var(--bbva-grey-200);
+    color: var(--bbva-grey-600);
+  }
+
+  /* Modal de eliminación */
+  .requirement-list-view .modal-header.bg-danger {
+    background-color: var(--bbva-red-dark) !important;
+  }
+
+  .requirement-list-view .btn-danger {
+    background-color: var(--bbva-red-dark);
+    border-color: var(--bbva-red-dark);
+  }
+
+  .requirement-list-view .btn-danger:hover {
+    background-color: #9d1e36;
+    border-color: #9d1e36;
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 767.98px) {
+    .requirement-list-view .kpi-card {
+      flex-direction: column;
+      text-align: center;
+      padding: 1rem;
+    }
+    
+    .requirement-list-view .kpi-icon-wrapper {
+      margin-right: 0;
+      margin-bottom: 0.8rem;
+    }
+    
+    .requirement-list-view .table-responsive {
+      font-size: 0.8rem;
+    }
+    
+    .requirement-list-view .btn-group {
+      flex-direction: column;
+    }
+    
+    .requirement-list-view .btn-group .btn {
+      margin-bottom: 0.2rem;
+    }
+  }
+
+  /* Animaciones específicas */
+  .requirement-list-view .animate__fadeInUp {
+    animation-duration: 0.4s;
+  }
+
+  /* Código de requerimiento */
+  .requirement-list-view code {
+    font-size: 0.75rem;
+    color: var(--bbva-core-dark-blue);
+    background-color: var(--bbva-sky-light-blue);
+    border: 1px solid var(--bbva-sky-blue);
+    padding: 0.2rem 0.4rem;
+    border-radius: 3px;
+    font-weight: 500;
+  }
+</style>
