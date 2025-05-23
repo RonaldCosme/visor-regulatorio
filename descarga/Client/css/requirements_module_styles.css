@@ -1,0 +1,229 @@
+<style>
+  /* Client/css/requirements_module_styles.css.html */
+  /* Estilos específicos para el dashboard/listado de Requerimientos */
+
+  .requirements-view .page-header { /* Similar a User Management */
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid var(--bbva-sky-light-blue);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .requirements-view .page-title {
+    color: var(--bbva-core-dark-blue);
+    font-weight: 700;
+    font-size: 1.6rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .requirements-view .page-subtitle {
+    font-size: 0.95rem;
+    color: var(--bbva-grey-500);
+  }
+
+  /* Tarjetas KPI (Key Performance Indicators) */
+  .kpi-card {
+    background-color: var(--bbva-white);
+    border-radius: var(--border-radius-base);
+    padding: 1.2rem;
+    display: flex;
+    align-items: center;
+    box-shadow: var(--shadow-light);
+    transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+    height: 100%; /* Para que todas las tarjetas en una fila tengan la misma altura */
+    border-left: 4px solid transparent; /* Borde para acento de color */
+  }
+
+  .kpi-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-medium);
+  }
+
+  /* Colores de borde para KPI cards */
+  .kpi-card.border-primary-bbva { border-left-color: var(--bbva-medium-blue); }
+  .kpi-card.border-success-bbva { border-left-color: var(--bbva-green-dark); }
+  .kpi-card.border-warning-bbva { border-left-color: #FFA000; } /* Naranja BBVA o similar */
+  .kpi-card.border-danger-bbva { border-left-color: var(--bbva-red-dark); }
+
+
+  .kpi-icon-wrapper {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1rem;
+    flex-shrink: 0; /* Para que el ícono no se encoja */
+  }
+
+  .kpi-icon-wrapper i { /* Íconos dentro de los wrappers */
+    color: var(--bbva-white); /* El color del ícono será blanco, el fondo lo da el wrapper */
+    font-size: 1.5rem;
+  }
+
+  /* Fondos para los wrappers de íconos KPI */
+  .kpi-icon-wrapper.bg-primary-bbva { background-color: var(--bbva-medium-blue); }
+  .kpi-icon-wrapper.bg-success-bbva { background-color: var(--bbva-green-dark); }
+  .kpi-icon-wrapper.bg-warning-bbva { background-color: #FFA000; }
+  .kpi-icon-wrapper.bg-danger-bbva { background-color: var(--bbva-red-dark); }
+  .kpi-icon-wrapper.bg-info-bbva { background-color: var(--bbva-sky-blue); }
+
+
+  .kpi-content .kpi-value {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--bbva-navy);
+    margin-bottom: 0.1rem;
+    line-height: 1.1;
+  }
+
+  .kpi-content .kpi-label {
+    font-size: 0.8rem;
+    color: var(--bbva-grey-500);
+    margin-bottom: 0;
+    line-height: 1.2;
+  }
+
+  /* Tarjetas de Acción (ej. "Nuevo Requerimiento", "Ver Reportes") */
+  .action-card {
+    background-color: var(--bbva-white);
+    border-radius: var(--border-radius-base);
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    box-shadow: var(--shadow-light);
+    transition: transform 0.2s ease-out, box-shadow 0.2s ease-out, border-left-color 0.3s ease;
+    cursor: pointer;
+    border-left: 5px solid transparent; /* Borde inicial transparente */
+    height: 100%;
+  }
+
+  .action-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-medium);
+    border-left-color: var(--bbva-medium-blue); /* Borde azul al hacer hover */
+  }
+
+  .action-icon-wrapper {
+    margin-right: 1.2rem;
+  }
+
+  .action-icon-wrapper i {
+    font-size: 2.2rem;
+    color: var(--bbva-medium-blue);
+    transition: color 0.3s ease;
+  }
+
+  .action-card:hover .action-icon-wrapper i {
+    color: var(--bbva-core-dark-blue); /* Ícono más oscuro al hacer hover en la tarjeta */
+  }
+
+  .action-content {
+    flex-grow: 1;
+  }
+
+  .action-content .action-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--bbva-core-dark-blue);
+    margin-bottom: 0.3rem;
+  }
+
+  .action-content .action-description {
+    font-size: 0.85rem;
+    color: var(--bbva-grey-500);
+    margin-bottom: 0;
+    line-height: 1.4;
+  }
+
+  .action-arrow { /* Flecha a la derecha en tarjetas de acción */
+    font-size: 1.3rem;
+    color: var(--bbva-grey-400);
+    transition: transform 0.2s ease, color 0.2s ease;
+  }
+
+  .action-card:hover .action-arrow {
+    transform: translateX(5px);
+    color: var(--bbva-medium-blue);
+  }
+
+  /* Tarjetas de Información Adicional o Gráficos */
+  .additional-info-card {
+    background-color: var(--bbva-white);
+    border-radius: var(--border-radius-base);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-light);
+  }
+
+  .card-title-bbva { /* Título dentro de una tarjeta */
+    color: var(--bbva-core-dark-blue);
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-bottom: 0.8rem;
+    border-bottom: 2px solid var(--bbva-sky-light-blue); /* Línea divisoria azul claro */
+    padding-bottom: 0.5rem;
+  }
+
+  .placeholder-chart { /* Para simular un gráfico */
+    min-height: 150px;
+    border: 2px dashed var(--bbva-grey-200);
+    border-radius: var(--border-radius-base);
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--bbva-grey-400);
+  }
+
+  /* Estilos para el formulario de requerimientos */
+  .requirement-form-view .form-section-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--bbva-core-dark-blue);
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--bbva-sky-light-blue);
+  }
+  .requirement-form-view .form-section-title:first-of-type {
+    margin-top: 0;
+  }
+
+  .requirement-form-view .form-check-label {
+    font-size: 0.9rem;
+  }
+  .requirement-form-view .form-text {
+    font-size: 0.8rem;
+  }
+
+  /* Responsive adjustments para KPIs y Action Cards */
+  @media (max-width: 767.98px) {
+    .kpi-card {
+      flex-direction: column;
+      text-align: center;
+      padding: 1rem;
+    }
+    .kpi-icon-wrapper {
+      margin-right: 0;
+      margin-bottom: 0.8rem;
+    }
+    .kpi-content .kpi-value {
+      font-size: 1.6rem;
+    }
+    .action-card {
+      flex-direction: column;
+      text-align: center;
+      padding: 1.2rem;
+    }
+    .action-icon-wrapper {
+      margin-right: 0;
+      margin-bottom: 0.8rem;
+    }
+    .action-arrow {
+      display: none; /* Ocultar flecha en móvil, ya que la tarjeta es clickeable */
+    }
+  }
+</style>
