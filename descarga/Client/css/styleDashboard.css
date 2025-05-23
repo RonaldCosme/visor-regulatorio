@@ -1,0 +1,106 @@
+<style>
+  /* Client/css/styleDashboard.css.html */
+
+  .dashboard-view-content { 
+    background-color: var(--bbva-white);
+    padding: 30px 35px; /* Aumentar padding */
+    border-radius: var(--border-radius-base);
+    box-shadow: var(--shadow-medium);
+    text-align: center; 
+    animation-name: fadeIn; 
+    animation-duration: 0.5s; 
+  }
+
+  .dashboard-view-content .bbva-logo-dashboard {
+    max-height: 45px; /* Aumentar tamaño del logo */
+    margin-bottom: 25px; /* Aumentar margen */
+    transition: transform 0.3s ease;
+  }
+  .dashboard-view-content .bbva-logo-dashboard:hover {
+    transform: scale(1.03);
+  }
+
+  .dashboard-view-content h2 {
+    color: var(--bbva-text-primary-dark); /* Usar color de texto primario oscuro */
+    font-weight: 600;
+    font-size: 1.75rem; /* Aumentar tamaño del título */
+    margin-bottom: 1rem; /* Aumentar margen */
+  }
+  .dashboard-view-content p.text-muted {
+    font-size: var(--font-size-md); /* Usar variable de tamaño */
+  }
+
+  .user-details-card {
+    background-color: var(--bbva-aqua-white); 
+    padding: 20px; /* Aumentar padding */
+    border-radius: var(--border-radius-base);
+    border: 1px solid var(--bbva-aqua-light); 
+    margin-top: 20px; /* Aumentar margen */
+    max-width: 600px; /* Aumentar ancho máximo */
+    box-shadow: var(--shadow-light);
+    transition: box-shadow 0.3s ease-in-out;
+  }
+  .user-details-card:hover {
+    box-shadow: var(--shadow-medium);
+  }
+  .user-details-card h6 {
+    font-size: 1.1rem; /* Aumentar tamaño */
+  }
+
+  .user-details-card p {
+    font-size: var(--font-size-sm); /* Usar variable de tamaño */
+    color: var(--bbva-navy); 
+    margin-bottom: 0.6rem; /* Aumentar margen */
+    text-align: left; 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center;
+    padding: 0.35rem 0; /* Aumentar padding vertical */
+    border-bottom: 1px dashed var(--bbva-grey-200); 
+  }
+   .user-details-card p:last-child {
+    border-bottom: none; 
+    margin-bottom: 0;
+   }
+
+  .user-details-card p strong {
+    color: var(--bbva-core-dark-blue);
+    margin-right: 12px; /* Aumentar margen */
+    font-weight: 500; 
+  }
+  .user-details-card p span:not(.badge) { 
+    text-align: right;
+    word-break: break-word; 
+  }
+
+  .user-details-card .badge {
+    font-size: var(--font-size-xs); /* Usar variable */
+    padding: 0.4em 0.7em; /* Aumentar padding */
+  }
+  
+  /* Accesos rápidos */
+  .dashboard-view-content .card.hover-card {
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    border: 1px solid var(--bbva-grey-200);
+  }
+  .dashboard-view-content .card.hover-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-medium);
+  }
+  .dashboard-view-content .card.hover-card .card-body {
+    padding: 1.5rem; /* Aumentar padding */
+  }
+  .dashboard-view-content .card.hover-card .fs-1 {
+    font-size: 2.8rem !important; /* Aumentar tamaño de iconos */
+    margin-bottom: 1.2rem !important;
+  }
+  .dashboard-view-content .card.hover-card .card-title {
+    font-size: 1.15rem; /* Aumentar tamaño de título de tarjeta */
+    color: var(--bbva-core-dark-blue);
+    font-weight: 600;
+  }
+   .dashboard-view-content .card.hover-card .card-text {
+    font-size: var(--font-size-sm); /* Usar variable */
+   }
+
+</style>

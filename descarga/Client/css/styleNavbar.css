@@ -1,0 +1,271 @@
+<style>
+  /* Client/css/styleNavbar.css.html */
+
+  /* Navbar General */
+  .app-navbar {
+    background-color: var(--bbva-dominant-blue); /* Color dominante para el navbar */
+    border-bottom: 1px solid var(--bbva-core-dark-blue); /* Borde inferior más oscuro */
+    height: var(--app-navbar-height);
+    z-index: 1030; 
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    padding-top: 0; 
+    padding-bottom: 0;
+  }
+  .app-navbar.navbar-scrolled { 
+    box-shadow: var(--shadow-medium); 
+  }
+  .app-navbar .navbar-brand {
+    color: var(--bbva-white); /* Texto/logo blanco para contraste */
+    font-weight: 700; 
+    font-size: 1.2rem; /* Ajustar tamaño */
+    transition: opacity 0.2s ease;
+    display: flex;
+    align-items: center;
+    padding-top: 0.5rem; /* Ajustar padding para centrar mejor el contenido */
+    padding-bottom: 0.5rem;
+  }
+  .app-navbar .navbar-brand:hover {
+    opacity: 0.9;
+  }
+  .app-navbar .navbar-logo {
+    height: 28px; /* Ajustar tamaño del logo */
+    margin-right: 0.6rem; 
+    transition: transform 0.3s ease;
+    filter: brightness(0) invert(1); /* Asegurar que el logo sea blanco si es oscuro */
+  }
+  .app-navbar .navbar-brand:hover .navbar-logo {
+    transform: scale(1.03);
+  }
+  .app-navbar .navbar-toggler {
+    border: 1px solid rgba(255, 255, 255, 0.25); /* Borde más sutil para el toggler */
+    padding: 0.35rem 0.65rem; 
+  }
+  .app-navbar .navbar-toggler i {
+    color: var(--bbva-white); 
+    font-size: 1.4rem; 
+  }
+  .app-navbar .navbar-toggler:focus {
+    box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0.2); 
+  }
+  .app-navbar .nav-link {
+    color: rgba(255, 255, 255, 0.85); /* Texto de enlace más claro */
+    font-weight: 500;
+    padding: 0.6rem 0.9rem; 
+    border-radius: var(--border-radius-base);
+    transition: background-color 0.2s ease, color 0.2s ease, transform 0.15s ease;
+    margin: 0 0.15rem; 
+    font-size: var(--font-size-sm); 
+    display: flex;
+    align-items: center;
+  }
+  .app-navbar .nav-link i {
+    font-size: 1.05rem; 
+    margin-right: 7px;
+    vertical-align: middle;
+    color: rgba(255, 255, 255, 0.7); /* Iconos ligeramente más tenues */
+    transition: color 0.2s ease;
+  }
+  .app-navbar .nav-link:hover,
+  .app-navbar .nav-link:focus {
+    color: var(--bbva-white);
+    background-color: rgba(255, 255, 255, 0.1); /* Fondo sutil al hacer hover */
+  }
+  .app-navbar .nav-link.active {
+    color: var(--bbva-white);
+    background-color: rgba(255, 255, 255, 0.15); 
+    font-weight: 600; 
+  }
+   .app-navbar .nav-link.active i {
+    color: var(--bbva-white);
+  }
+  .app-navbar .nav-link .user-icon { 
+    font-size: 1.3rem; 
+  }
+
+  /* Estilos para el buscador en el Navbar */
+  .app-navbar .search-form {
+    min-width: 200px; 
+    max-width: 320px; 
+    width: 100%; 
+  }
+  .app-navbar .search-input {
+    border-radius: var(--border-radius-base) 0 0 var(--border-radius-base);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.1); /* Fondo translúcido */
+    color: var(--bbva-white);
+    font-size: var(--font-size-sm); 
+    padding: 0.45rem 0.8rem; 
+  }
+  .app-navbar .search-input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+  }
+  .app-navbar .search-input:focus {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.4);
+    box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0.15);
+    color: var(--bbva-white);
+  }
+  .app-navbar .search-button {
+    border-radius: 0 var(--border-radius-base) var(--border-radius-base) 0;
+    border: 1px solid var(--bbva-sky-blue); /* Usar un azul más claro para el botón */
+    background-color: var(--bbva-sky-blue);
+    color: var(--bbva-core-dark-blue); /* Texto oscuro para contraste */
+    padding: 0.45rem 0.8rem; 
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+  }
+  .app-navbar .search-button:hover {
+    background-color: var(--bbva-medium-light-blue);
+    border-color: var(--bbva-medium-light-blue);
+  }
+
+  /* Dropdown Menus en Navbar */
+  .app-navbar .dropdown-menu { 
+    background-color: var(--bbva-white); /* Fondo blanco para el dropdown */
+    border: 1px solid var(--bbva-grey-200);
+    box-shadow: var(--shadow-medium);
+    border-radius: var(--border-radius-large); 
+    margin-top: 0.4rem; 
+    padding-top: 0.4rem; 
+    padding-bottom: 0.4rem;
+    min-width: 230px; 
+    font-size: var(--font-size-sm); 
+    animation-name: fadeIn; 
+    animation-duration: 0.2s;
+  }
+  .app-navbar .dropdown-menu .dropdown-item {
+    color: var(--text-primary-color); /* Texto oscuro para items */
+    padding: 0.55rem 1rem; 
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+  .app-navbar .dropdown-menu .dropdown-item i {
+    font-size: 0.95rem; 
+    margin-right: 9px; 
+    color: var(--bbva-medium-blue); /* Iconos azules */
+    width: 18px; 
+    text-align: center;
+    transition: color 0.2s ease;
+  }
+  .app-navbar .dropdown-menu .dropdown-item:hover,
+  .app-navbar .dropdown-menu .dropdown-item:focus {
+    background-color: var(--bbva-grey-100);
+    color: var(--primary-color);
+  }
+   .app-navbar .dropdown-menu .dropdown-item:hover i,
+   .app-navbar .dropdown-menu .dropdown-item:focus i {
+    color: var(--primary-color);
+  }
+  .app-navbar .dropdown-menu .dropdown-item.active,
+  .app-navbar .dropdown-menu .dropdown-item:active {
+    background-color: var(--bbva-sky-light-blue);
+    color: var(--primary-color);
+  }
+  .app-navbar .dropdown-menu .dropdown-item.active i,
+  .app-navbar .dropdown-menu .dropdown-item:active i {
+    color: var(--primary-color);
+  }
+  .app-navbar .dropdown-divider {
+    border-top-color: var(--bbva-grey-200);
+  }
+  .app-navbar .user-info-dropdown { 
+    background-color: var(--bbva-grey-100);
+    border-bottom: 1px solid var(--bbva-grey-200);
+    padding: 0.7rem 1rem; 
+    line-height: 1.3; 
+  }
+  .app-navbar .user-info-dropdown strong {
+    color: var(--bbva-core-dark-blue);
+    font-size: var(--font-size-sm); 
+  }
+  .app-navbar .user-info-dropdown small {
+    color: var(--text-secondary-color);
+    font-size: var(--font-size-xs); 
+  }
+   .app-navbar .user-info-dropdown .badge {
+    font-size: var(--font-size-xs);
+    padding: 0.25em 0.5em; 
+   }
+
+  /* Ajustes Responsivos para Navbar (cuando se colapsa) */
+  @media (max-width: 991.98px) { 
+    .app-navbar .navbar-collapse {
+      background-color: var(--bbva-dominant-blue); /* Mantener color dominante */
+      margin-top: 0; 
+      border-radius: 0;
+      box-shadow: var(--shadow-medium);
+      padding: 0.5rem 0; 
+      position: absolute;
+      top: var(--app-navbar-height); 
+      left: 0;
+      right: 0;
+      z-index: 1029; 
+      border-top: 1px solid var(--bbva-core-dark-blue);
+    }
+    .app-navbar .nav-link {
+      padding: 0.7rem 1.1rem; 
+      margin: 0.2rem 0.4rem; 
+      color: rgba(255, 255, 255, 0.85); 
+    }
+     .app-navbar .nav-link i {
+       color: rgba(255, 255, 255, 0.7); 
+     }
+    .app-navbar .nav-link:hover,
+    .app-navbar .nav-link:focus {
+      background-color: rgba(255, 255, 255, 0.1);
+      color: var(--bbva-white);
+    }
+     .app-navbar .nav-link.active {
+        background-color: rgba(255, 255, 255, 0.15);
+        color: var(--bbva-white);
+     }
+
+    .app-navbar .search-form {
+        margin: 0.7rem 1rem !important; 
+        width: auto; 
+        max-width: none;
+    }
+    .app-navbar .dropdown-menu { 
+      box-shadow: none;
+      border: none;
+      background-color: var(--bbva-dominant-blue); /* Menú desplegable también con color dominante */
+      width: 100% !important; 
+      border-radius: 0; 
+      animation: none; 
+      margin-top: 0; 
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+    .app-navbar .dropdown-menu .dropdown-item {
+      color: rgba(255, 255, 255, 0.85); /* Texto claro para items */
+      padding-left: 1.8rem; 
+    }
+     .app-navbar .dropdown-menu .dropdown-item i {
+      color: rgba(255, 255, 255, 0.7);
+    }
+    .app-navbar .dropdown-menu .dropdown-item:hover,
+    .app-navbar .dropdown-menu .dropdown-item:focus {
+      background-color: rgba(255, 255, 255, 0.1);
+      color: var(--bbva-white);
+    }
+     .app-navbar .user-info-dropdown { 
+        background-color: rgba(0,0,0,0.1); /* Fondo ligeramente más oscuro para info de usuario */
+        border-bottom: 1px solid var(--bbva-core-dark-blue);
+        margin: 0; 
+        padding: 0.7rem 1.1rem; 
+        padding-left: 1.8rem; 
+     }
+     .app-navbar .user-info-dropdown strong,
+     .app-navbar .user-info-dropdown small {
+        color: rgba(255, 255, 255, 0.9);
+     }
+     .app-navbar .dropdown-menu-end .user-info-dropdown { 
+        border-radius: 0;
+     }
+     .app-navbar .user-info-dropdown:first-child { 
+        border-top-left-radius: 0; 
+        border-top-right-radius: 0;
+     }
+  }
+</style>

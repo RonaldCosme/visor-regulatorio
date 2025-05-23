@@ -1,0 +1,340 @@
+<style>
+  /* Client/css/styleRequirementForm.css.html */
+
+  .requirement-form-view {
+    animation-duration: 0.4s;
+  }
+
+  .requirement-form-view .card {
+    border: none;
+    box-shadow: var(--shadow-medium);
+    border-radius: var(--border-radius-large); /* Usar radio más grande */
+    overflow: hidden; /* Para que el header no sobresalga */
+  }
+
+  .requirement-form-view .card-header {
+    background: var(--bbva-dominant-blue); /* Color dominante para el header */
+    border: none;
+    padding: 1.2rem 1.5rem; 
+    border-top-left-radius: var(--border-radius-large);
+    border-top-right-radius: var(--border-radius-large);
+  }
+
+  .requirement-form-view .card-header h4 {
+    font-weight: 600;
+    margin: 0;
+    font-size: 1.25rem; 
+    color: var(--bbva-white);
+    display: flex;
+    align-items: center;
+  }
+  .requirement-form-view .card-header h4 i {
+    margin-right: 0.75rem;
+    font-size: 1.4rem;
+  }
+  .requirement-form-view .card-header .btn-close {
+    filter: invert(1) grayscale(100%) brightness(200%);
+    opacity: 0.8;
+  }
+  .requirement-form-view .card-header .btn-close:hover {
+    opacity: 1;
+  }
+
+  .requirement-form-view .card-body {
+    background-color: var(--bbva-white);
+    padding: 1.5rem; 
+    border-bottom-left-radius: var(--border-radius-large);
+    border-bottom-right-radius: var(--border-radius-large);
+  }
+   @media (min-width: 768px) {
+    .requirement-form-view .card-body {
+      padding: 2rem;
+    }
+  }
+
+  .requirement-form-view fieldset {
+    border: 1px solid var(--bbva-grey-200);
+    border-radius: var(--border-radius-base);
+    padding: 1.5rem; 
+    margin-bottom: 1.5rem; 
+    background-color: var(--bbva-white); 
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+  .requirement-form-view fieldset:focus-within { /* Resaltar fieldset cuando un input interno tiene foco */
+    border-color: var(--bbva-medium-blue);
+    box-shadow: 0 0 0 0.1rem rgba(0, 87, 184, 0.15);
+  }
+
+  .requirement-form-view legend {
+    width: auto;
+    margin-bottom: 1rem; 
+    padding: 0.4rem 1rem; 
+    background-color: var(--bbva-sky-light-blue);
+    border: 1px solid var(--bbva-sky-blue);
+    border-radius: var(--border-radius-base);
+    font-size: 1rem !important; 
+    font-weight: 600;
+    color: var(--bbva-core-dark-blue);
+    display: inline-flex; 
+    align-items: center;
+  }
+  .requirement-form-view legend i {
+    margin-right: 0.5rem;
+    font-size: 1.1rem;
+  }
+
+  .requirement-form-view .form-label {
+    font-size: var(--font-size-sm); 
+    font-weight: 500; /* Ligeramente menos bold para un look más limpio */
+    color: var(--bbva-grey-700);
+    margin-bottom: 0.4rem; 
+    display: flex;
+    align-items: center;
+  }
+
+  .requirement-form-view .form-label .text-danger {
+    margin-left: 0.25rem; 
+    font-size: 0.9rem; 
+  }
+  
+  /* Inputs y selects heredan de styleGeneral, pero podemos ajustar si es necesario */
+  .requirement-form-view .form-control[readonly] {
+    background-color: var(--bbva-grey-100);
+    color: var(--bbva-grey-600);
+    cursor: default; /* Cambiar cursor para solo lectura */
+    border-style: solid; /* Quitar dashed, Bootstrap ya lo maneja bien */
+    opacity: 0.8;
+  }
+
+  .requirement-form-view textarea.form-control {
+    resize: vertical;
+    min-height: 90px; 
+  }
+
+  .requirement-form-view .form-check-input {
+    border-color: var(--bbva-grey-400);
+  }
+  .requirement-form-view .form-check-input:checked {
+    background-color: var(--bbva-dominant-blue);
+    border-color: var(--bbva-dominant-blue);
+  }
+  .requirement-form-view .form-check-label {
+    font-size: var(--font-size-sm);
+    color: var(--bbva-grey-700);
+  }
+
+  /* Sección de sistemas destacada */
+  .requirement-form-view .section-highlight { /* Clase genérica para secciones destacadas */
+    background-color: var(--bbva-sky-light-blue) !important;
+    border-radius: var(--border-radius-base);
+    padding: 1.2rem; 
+    border: 1px solid var(--bbva-sky-blue);
+  }
+
+  /* Estilos para validación ya están en styleGeneral.css */
+
+  /* Estilos para botones del formulario */
+  .form-actions {
+    border-top: 1px solid var(--bbva-grey-200);
+    padding-top: 1.5rem;
+    margin-top: 1.5rem;
+    display: flex;
+    flex-wrap: wrap; /* Para que los botones se ajusten en pantallas pequeñas */
+    gap: 0.75rem; /* Espacio entre botones */
+    justify-content: flex-end; /* Alinea botones a la derecha */
+  }
+
+  .requirement-form-view .btn-primary-bbva, /* Para el botón principal de guardar/crear */
+  .requirement-form-view .btn-success-bbva { /* Si hay un botón de "completar" */
+    background: var(--bbva-dominant-blue);
+    border-color: var(--bbva-dominant-blue);
+    color: var(--bbva-white);
+    font-weight: 600;
+    padding: 0.7rem 1.5rem; 
+    border-radius: var(--border-radius-base);
+    transition: all 0.2s ease;
+    min-width: 120px; /* Ancho mínimo para botones de acción */
+  }
+  .requirement-form-view .btn-primary-bbva:hover,
+  .requirement-form-view .btn-success-bbva:hover {
+    background: var(--bbva-core-dark-blue);
+    border-color: var(--bbva-core-dark-blue);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-light);
+  }
+  .requirement-form-view .btn-primary-bbva:disabled,
+  .requirement-form-view .btn-success-bbva:disabled {
+    background: var(--bbva-grey-300);
+    border-color: var(--bbva-grey-300);
+    color: var(--bbva-grey-500);
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+  }
+
+  .requirement-form-view .btn-outline-secondary-bbva { /* Para cancelar o volver */
+    border-color: var(--bbva-grey-400);
+    color: var(--bbva-grey-700);
+    font-weight: 500;
+    padding: 0.7rem 1.5rem; 
+    border-radius: var(--border-radius-base);
+    transition: all 0.2s ease;
+    min-width: 120px;
+  }
+  .requirement-form-view .btn-outline-secondary-bbva:hover {
+    background-color: var(--bbva-grey-100);
+    border-color: var(--bbva-grey-500);
+    color: var(--bbva-grey-700);
+  }
+  
+  .requirement-form-view .btn-danger-bbva { /* Para eliminar o acciones destructivas */
+    background-color: var(--bbva-red-dark);
+    border-color: var(--bbva-red-dark);
+    color: var(--bbva-white);
+  }
+  .requirement-form-view .btn-danger-bbva:hover {
+    background-color: #a50000; /* Rojo más oscuro */
+    border-color: #a50000;
+  }
+
+
+  /* Alert de modo edición */
+  .requirement-form-view .alert-info { /* Hereda de styleGeneral, pero se puede ajustar */
+    padding: 0.8rem 1.1rem; 
+  }
+  .requirement-form-view .alert-info i {
+    font-size: 1.05rem; 
+  }
+
+  .requirement-form-view .form-text {
+    font-size: var(--font-size-xs); 
+    color: var(--bbva-grey-500);
+    margin-top: 0.25rem; 
+  }
+  .requirement-form-view .form-text.text-danger {
+    color: var(--bbva-red-dark) !important;
+    font-weight: 500;
+  }
+
+  /* Estilos responsivos */
+  @media (max-width: 767.98px) {
+    .requirement-form-view .card-body {
+      padding: 1.25rem; 
+    }
+    .requirement-form-view fieldset {
+      padding: 1.25rem; 
+      margin-bottom: 1.25rem; 
+    }
+    .requirement-form-view legend {
+      font-size: 0.95rem !important; 
+      padding: 0.35rem 0.8rem; 
+    }
+    .form-actions {
+      justify-content: center; /* Centrar botones en móvil */
+    }
+    .form-actions .btn { /* Hacer botones de ancho completo en móvil */
+      width: 100%;
+      margin-bottom: 0.5rem;
+    }
+    .form-actions .btn:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  /* Estilos para estados específicos del formulario */
+  .requirement-form-view .status-indicator {
+    padding: 0.5rem 0.75rem;
+    border-radius: var(--border-radius-base);
+    font-weight: 500;
+    font-size: var(--font-size-sm);
+    display: inline-block;
+    margin-bottom: 1rem;
+  }
+  .requirement-form-view .status-indicator.estado-terminado {
+    background-color: var(--bbva-green-light);
+    color: var(--bbva-green-dark);
+    border: 1px solid var(--bbva-green-dark);
+  }
+  .requirement-form-view .status-indicator.estado-vencido {
+    background-color: var(--bbva-red-light);
+    color: var(--bbva-red-dark);
+    border: 1px solid var(--bbva-red-dark);
+  }
+  .requirement-form-view .status-indicator.estado-prorroga {
+    background-color: var(--bbva-warning-background);
+    color: var(--bbva-warning-text);
+    border: 1px solid var(--bbva-warning-text);
+  }
+
+  .requirement-form-view .required-field > .form-label::after { 
+    content: '*';
+    color: var(--bbva-red-dark);
+    margin-left: 0.2rem;
+    font-weight: normal; /* No tan bold para un look más limpio */
+    font-size: 1.1em; /* Ligeramente más grande para visibilidad */
+  }
+
+  /* Animaciones sutiles para inputs */
+  .requirement-form-view .form-control:focus,
+  .requirement-form-view .form-select:focus {
+    animation: inputFocusPulse 0.5s ease-out;
+  }
+
+  @keyframes inputFocusPulse {
+    0% { box-shadow: 0 0 0 0.2rem rgba(0, 87, 184, 0.2); }
+    50% { box-shadow: 0 0 0 0.25rem rgba(0, 87, 184, 0.3); } /* Sutilmente más grande */
+    100% { box-shadow: 0 0 0 0.2rem rgba(0, 87, 184, 0.2); }
+  }
+
+  /* Estilo para campos condicionales (transiciones de Vue) */
+  .conditional-field-outer.v-enter-active,
+  .conditional-field-outer.v-leave-active {
+    transition: all 0.3s ease-out;
+    overflow: hidden;
+  }
+  .conditional-field-outer.v-enter-from,
+  .conditional-field-outer.v-leave-to {
+    opacity: 0;
+    max-height: 0 !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    transform: translateY(-10px);
+  }
+   .conditional-field-outer.v-enter-to,
+   .conditional-field-outer.v-leave-from {
+      opacity: 1;
+      max-height: 1000px; /* Suficientemente grande */
+      transform: translateY(0);
+   }
+   .conditional-field-inner {
+     padding-top: 0.5rem; /* Espacio cuando el campo aparece */
+   }
+
+  .requirement-form-view .spinner-border-sm {
+    width: 1rem; 
+    height: 1rem; 
+    border-width: 0.16em; 
+  }
+  
+  /* Estilo para datalists (mejora visual) */
+  .requirement-form-view input[list]::-webkit-calendar-picker-indicator {
+    display: none !important; /* Ocultar flecha por defecto en Chrome si se usa un icono personalizado */
+  }
+  .form-group-icon { /* Para agrupar input y un icono */
+    position: relative;
+  }
+  .form-group-icon .form-control {
+    padding-right: 2.5rem; /* Espacio para el icono */
+  }
+  .form-group-icon .input-icon {
+    position: absolute;
+    right: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--bbva-grey-500);
+    pointer-events: none; /* Para que no interfiera con el input */
+  }
+
+</style>

@@ -1,0 +1,99 @@
+<style>
+  /* Client/css/styleUserManagement.css.html */
+
+  .user-management-view .page-header {
+    margin-bottom: 1.8rem; /* Aumentar margen */
+    padding-bottom: 0.9rem; /* Aumentar padding */
+    border-bottom: 2px solid var(--bbva-sky-light-blue);
+  }
+
+  .user-management-view .page-title {
+    color: var(--bbva-core-dark-blue);
+    font-weight: 700;
+    font-size: 1.8rem; /* Aumentar tamaño del título */
+    margin-bottom: 0.3rem; /* Ajustar margen */
+  }
+
+  .user-management-view .page-subtitle {
+    font-size: 1rem; /* Aumentar tamaño del subtítulo */
+    color: var(--bbva-grey-500);
+  }
+
+  /* Filtros y acciones sobre la tabla */
+  .user-management-view .table-controls {
+    margin-bottom: 1.2rem; /* Aumentar margen */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; 
+    gap: 0.9rem; 
+  }
+
+  .user-management-view .search-filter-group {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem; /* Aumentar espacio */
+  }
+  .user-management-view .search-filter-group .form-control {
+    max-width: 280px; /* Aumentar ancho del input de búsqueda */
+    font-size: var(--font-size-sm); /* Usar variable */
+  }
+   .user-management-view .search-filter-group .btn {
+    font-size: var(--font-size-sm); /* Usar variable */
+   }
+
+  /* Estilos específicos para la tabla de usuarios */
+  .user-management-view .table th { /* Hereda de styleGeneral, pero podemos ajustar aquí */
+    font-size: var(--font-size-sm); /* Asegurar consistencia */
+  }
+  .user-management-view .table td { /* Hereda de styleGeneral */
+    font-size: var(--font-size-sm); /* Asegurar consistencia */
+  }
+
+  .user-management-view .table th.col-name {
+    width: 25%;
+  }
+  .user-management-view .table th.col-email {
+    width: 30%;
+  }
+  .user-management-view .table th.col-role {
+    width: 15%;
+  }
+  .user-management-view .table th.col-actions {
+    width: 12%; /* Un poco más de espacio para acciones */
+    text-align: right;
+  }
+  .user-management-view .table td.col-actions {
+    text-align: right;
+    white-space: nowrap; 
+  }
+  .user-management-view .table td.col-actions .btn {
+    margin-left: 0.4rem; /* Aumentar margen */
+    font-size: var(--font-size-xs); /* Usar variable */
+  }
+
+  /* Estilos para el modal de cambio de rol */
+  #changeRoleModal .modal-body .form-label {
+    font-weight: 500;
+    color: var(--bbva-grey-600);
+    font-size: var(--font-size-sm); /* Usar variable */
+  }
+  #changeRoleModal .modal-body .current-role-info {
+    font-size: var(--font-size-sm); /* Usar variable */
+    color: var(--text-secondary-color);
+  }
+  #changeRoleModal .modal-body .form-select {
+    border-radius: var(--border-radius-base);
+    border: 1px solid var(--border-color);
+    padding: 0.7rem 0.9rem; 
+    font-size: var(--font-size-sm); /* Usar variable */
+  }
+  #changeRoleModal .modal-body .form-select:focus {
+    border-color: var(--bbva-medium-blue);
+    box-shadow: 0 0 0 0.15rem rgba(25, 115, 184, 0.25);
+  }
+  #changeRoleModal .modal-footer .btn {
+    font-size: var(--font-size-sm); /* Usar variable */
+  }
+
+</style>

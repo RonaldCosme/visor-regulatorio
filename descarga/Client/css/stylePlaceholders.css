@@ -1,0 +1,44 @@
+<style>
+  /* Client/css/stylePlaceholders.css.html */
+  /* Estilos para las vistas de placeholder (Visitas, Recomendaciones, Perfil) */
+
+  .placeholder-view {
+    text-align: center;
+    padding: 35px 20px; /* Aumentar padding */
+    background-color: var(--bbva-white);
+    border-radius: var(--border-radius-base);
+    box-shadow: var(--shadow-light);
+    animation-name: fadeIn; 
+    animation-duration: 0.5s; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 350px; /* Aumentar altura mínima */
+  }
+
+  .placeholder-view .placeholder-icon {
+    font-size: 3rem; /* Aumentar tamaño del ícono */
+    color: var(--bbva-medium-blue); 
+    margin-bottom: 1.2rem; /* Aumentar margen */
+    transition: transform 0.3s ease-in-out, color 0.3s ease;
+  }
+  .placeholder-view:hover .placeholder-icon {
+    transform: scale(1.1) rotate(3deg); 
+    color: var(--bbva-core-dark-blue); /* Cambiar color al hacer hover */
+  }
+
+  .placeholder-view h3 {
+    font-size: 1.5rem; /* Aumentar tamaño del título */
+    color: var(--bbva-core-dark-blue);
+    margin-top: 0; 
+    margin-bottom: 0.75rem; /* Aumentar margen */
+  }
+
+  .placeholder-view p.text-muted {
+    font-size: var(--font-size-md); /* Usar variable, un poco más grande */
+    max-width: 450px; /* Aumentar ancho máximo */
+    margin-bottom: 0;
+    line-height: 1.6; /* Mejorar legibilidad */
+  }
+</style>

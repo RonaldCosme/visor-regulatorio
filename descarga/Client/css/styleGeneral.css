@@ -1,0 +1,490 @@
+<style>
+  /* Client/css/styleGeneral.css.html */
+
+  :root {
+    /* Colores BBVA Principales */
+    --bbva-dominant-blue: #001391; /* NUEVO COLOR DOMINANTE */
+    --bbva-text-primary-dark: #070E46; 
+    --bbva-background-primary-light: #F8F9FA; /* Un gris muy claro para fondos generales */
+    --bbva-body-text-color: #1D1D1B; /* Color principal para el cuerpo del texto, ligeramente más suave que negro puro */
+    
+    --bbva-navy: #072146; 
+    --bbva-core-blue: var(--bbva-dominant-blue); /* Azul corporativo principal para interacciones, botones */
+    --bbva-core-dark-blue: #000F6B; /* Un poco más oscuro que el dominante para hover/variaciones */
+    --bbva-core-light-blue: #1A4DBE; /* Un azul más claro para acentos secundarios */
+    --bbva-medium-blue: #0057B8; /* Azul medio, bueno para enlaces y acentos */
+    --bbva-medium-light-blue: #49A5E6;
+    --bbva-sky-blue: #5BBEFF;
+    --bbva-sky-light-blue: #E6F3FF; /* Usado para cabeceras de tabla, alertas info, más claro */
+    
+    --bbva-aqua: #2DCCCD;
+    --bbva-aqua-white: #EAF9FA; 
+    --bbva-aqua-light: #5AC4C4;
+    
+    --bbva-white: #FFFFFF;
+    --bbva-grey-700: #333333; 
+    --bbva-grey-600: #4F4F4F; /* Gris oscuro para texto secundario */
+    --bbva-grey-500: #6c757d; /* Gris medio para texto menos importante */
+    --bbva-grey-400: #BDBDBD;
+    --bbva-grey-300: #CED4DA; /* Bordes suaves */
+    --bbva-grey-200: #E9ECEF; /* Separadores, fondos muy claros */
+    --bbva-grey-100: #F8F9FA; /* Alternativa a background-primary-light */
+
+    --bbva-red-dark: #C80000; /* Rojo para errores, más intenso */
+    --bbva-red-light: #FDECEA; /* Fondo para alertas de error */
+    --bbva-green-dark: #008549; /* Verde para éxito */
+    --bbva-green-light: #E6F3ED; /* Fondo para alertas de éxito */
+    --bbva-warning-text: #B98409; 
+    --bbva-warning-background: #FFF8E1; /* Fondo para advertencias, más suave */
+
+    /* Asignación de colores de la app */
+    --app-background: var(--bbva-background-primary-light);
+    --text-primary-color: var(--bbva-body-text-color);
+    --text-secondary-color: var(--bbva-grey-600);
+    --text-on-primary-bg: var(--bbva-white); 
+    --text-on-white-bg: var(--bbva-core-blue); 
+
+    --primary-color: var(--bbva-core-blue); 
+    --primary-hover-color: var(--bbva-core-dark-blue);
+    
+    --border-color: var(--bbva-grey-300);
+    --border-radius-base: 6px; /* Bordes ligeramente menos redondeados para un look más formal */
+    --border-radius-large: 8px;
+    --shadow-light: 0 2px 4px rgba(0, 20, 145, 0.06); /* Sombra basada en el azul dominante */
+    --shadow-medium: 0 4px 10px rgba(0, 20, 145, 0.1);
+    --shadow-large: 0 8px 20px rgba(0, 20, 145, 0.12);
+
+
+    /* Tipografía y Tamaños */
+    --font-family-base: 'Inter', "BentonSansBBVA-Book", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --app-navbar-height: 64px; 
+    
+    --font-size-root: 16px; 
+    --font-size-base: 1rem; 
+    --font-size-lg: 1.125rem; 
+    --font-size-md: 1rem; 
+    --font-size-sm: 0.875rem; /* 14px */
+    --font-size-xs: 0.75rem; /* 12px */
+    
+    --line-height-base: 1.6;
+  }
+
+  body {
+    font-family: var(--font-family-base);
+    background-color: var(--app-background);
+    color: var(--text-primary-color);
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-size: var(--font-size-base); 
+    line-height: var(--line-height-base);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    word-wrap: break-word;
+    overflow-x: clip;
+  }
+
+  #app {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    width: 100%;
+    overflow-x: hidden; 
+  }
+
+  /* Layout Principal */
+  .main-content-wrapper {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    position: relative; 
+  }
+  .main-content-wrapper.logged-in {
+    padding-top: var(--app-navbar-height); 
+  }
+  main {
+    flex-grow: 1;
+    padding: 20px; /* Padding general reducido para un look más compacto */
+    width: 100%;
+    overflow-y: auto; 
+  }
+   @media (min-width: 768px) {
+    main {
+      padding: 28px;
+    }
+  }
+  main.pt-custom { 
+    padding-top: 20px !important;
+  }
+   @media (min-width: 768px) {
+    main.pt-custom {
+      padding-top: 28px !important;
+    }
+  }
+  .main-content-wrapper:not(.logged-in) {
+    align-items: center;
+    justify-content: center;
+    padding-top: 0;
+  }
+  .main-content-wrapper:not(.logged-in) main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 20px; 
+  }
+
+  /* Formularios Generales */
+  .form-control, .form-select {
+    border-radius: var(--border-radius-base);
+    border: 1px solid var(--border-color);
+    padding: 0.65rem 1rem; 
+    font-size: var(--font-size-sm); 
+    transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    background-color: var(--bbva-white);
+    color: var(--text-primary-color);
+  }
+  .form-control:focus, .form-select:focus {
+    border-color: var(--bbva-medium-blue);
+    box-shadow: 0 0 0 0.2rem rgba(0, 87, 184, 0.2); 
+  }
+  .form-floating > label {
+    padding: 0.65rem 1rem; 
+    color: var(--text-secondary-color);
+    font-size: var(--font-size-sm); 
+  }
+  .form-floating > .form-control:focus ~ label,
+  .form-floating > .form-control:not(:placeholder-shown) ~ label {
+    color: var(--bbva-medium-blue);
+    font-size: var(--font-size-xs); 
+  }
+  .invalid-feedback {
+    display: block; 
+    font-size: var(--font-size-xs);
+    color: var(--bbva-red-dark);
+  }
+  .form-control.is-invalid, .was-validated .form-control:invalid,
+  .form-select.is-invalid, .was-validated .form-select:invalid {
+    border-color: var(--bbva-red-dark);
+    padding-right: calc(1.5em + .75rem); /* Espacio para icono de Bootstrap */
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='%23C80000'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23C80000' stroke='none'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right calc(.375em + .1875rem) center;
+    background-size: calc(.75em + .375rem) calc(.75em + .375rem);
+  }
+  .form-control.is-valid, .was-validated .form-control:valid,
+  .form-select.is-valid, .was-validated .form-select:valid {
+    border-color: var(--bbva-green-dark);
+    padding-right: calc(1.5em + .75rem);
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23008549' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4L1.1 2l2.2 2.2.9-1.9L5.6 1l.3.2c.5.4.5 1.1.2 1.4L2.3 6.73z'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right calc(.375em + .1875rem) center;
+    background-size: calc(.75em + .375rem) calc(.75em + .375rem);
+  }
+
+
+  /* Botones Generales */
+  .btn {
+    border-radius: var(--border-radius-base);
+    padding: 0.65rem 1.25rem; 
+    font-weight: 600; /* Más bold para botones */
+    transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, transform 0.1s ease, box-shadow 0.15s ease;
+    text-transform: none; 
+    letter-spacing: normal; 
+    font-size: var(--font-size-sm); 
+  }
+  .btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: var(--bbva-white);
+  }
+  .btn-primary:hover {
+    background-color: var(--primary-hover-color);
+    border-color: var(--primary-hover-color);
+    color: var(--bbva-white);
+    transform: translateY(-1px); 
+    box-shadow: var(--shadow-light);
+  }
+  .btn-primary:active { 
+    transform: translateY(0px);
+    box-shadow: none;
+  }
+  .btn-primary:disabled, .btn-primary.disabled {
+    background-color: var(--bbva-grey-200);
+    border-color: var(--bbva-grey-200);
+    color: var(--bbva-grey-500);
+    box-shadow: none;
+    transform: none;
+  }
+  .btn-outline-primary {
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+  }
+  .btn-outline-primary:hover {
+    background-color: var(--primary-color);
+    color: var(--bbva-white);
+  }
+  .btn-link {
+    color: var(--bbva-medium-blue);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: var(--font-size-sm);
+  }
+  .btn-link:hover {
+    color: var(--primary-hover-color);
+    text-decoration: underline;
+  }
+  .btn-sm { 
+    padding: 0.3rem 0.7rem; 
+    font-size: var(--font-size-xs);
+  }
+  .btn-lg {
+    padding: 0.8rem 1.5rem;
+    font-size: var(--font-size-base);
+  }
+
+  /* Alertas Globales y de Mensajes */
+  .alert {
+    border-radius: var(--border-radius-base);
+    padding: 0.9rem 1.25rem; 
+    margin-bottom: 1.25rem; 
+    border-width: 1px;
+    border-style: solid;
+    font-size: var(--font-size-sm);
+    display: flex;
+    align-items: center;
+  }
+  .alert i.bi {
+    margin-right: 0.75rem;
+    font-size: 1.25rem;
+  }
+  .alert-danger {
+    background-color: var(--bbva-red-light);
+    color: var(--bbva-red-dark);
+    border-color: var(--bbva-red-dark);
+  }
+  .alert-success {
+    background-color: var(--bbva-green-light);
+    color: var(--bbva-green-dark);
+    border-color: var(--bbva-green-dark);
+  }
+  .alert-warning { 
+    background-color: var(--bbva-warning-background); 
+    color: var(--bbva-warning-text); 
+    border-color: var(--bbva-warning-text); 
+  }
+  .alert-info {
+    background-color: var(--bbva-sky-light-blue);
+    color: var(--bbva-core-dark-blue);
+    border-color: var(--bbva-sky-blue);
+  }
+
+  .global-alert {
+    position: fixed;
+    top: calc(var(--app-navbar-height) + 15px); 
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1050; 
+    min-width: 300px; 
+    max-width: 90%;
+    box-shadow: var(--shadow-medium);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+   @media (min-width: 768px) {
+    .global-alert {
+      max-width: 550px; 
+    }
+  }
+  .global-alert .btn-close { 
+    font-size: 0.75rem; 
+    padding: 0.4rem; 
+  }
+
+  /* Spinner de Carga */
+  .loading-spinner-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(248, 249, 250, 0.85); /* Usar --app-background con opacidad */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    backdrop-filter: blur(2px); 
+  }
+  .spinner-border.text-primary { 
+    color: var(--primary-color) !important;
+    width: 3rem; 
+    height: 3rem; 
+    border-width: 0.25em; 
+  }
+  .loading-spinner-overlay p {
+    font-size: var(--font-size-sm);
+    color: var(--bbva-core-dark-blue);
+  }
+
+  /* Animaciones (usando Animate.css) */
+  .animate__animated.animate__fadeIn { animation-duration: 0.3s; }
+  .animate__animated.animate__fadeInUp { animation-duration: 0.3s; }
+  .animate__animated.animate__fadeInDown { animation-duration: 0.25s; }
+  .animate__faster { animation-duration: 0.2s !important; }
+
+
+  /* Contenedor de Vistas */
+  .app-view-container {
+    width: 100%;
+  }
+
+  /* Tablas Generales */
+  .table-responsive {
+    border-radius: var(--border-radius-large); /* Usar radio más grande para contenedores */
+    box-shadow: var(--shadow-light);
+    overflow: hidden; 
+    border: 1px solid var(--bbva-grey-200);
+  }
+  .table {
+    background-color: var(--bbva-white);
+    margin-bottom: 0; 
+  }
+  .table thead th {
+    background-color: var(--bbva-sky-light-blue);
+    color: var(--bbva-core-dark-blue);
+    border-bottom: 2px solid var(--bbva-medium-blue);
+    font-weight: 600; 
+    font-size: var(--font-size-sm); 
+    padding: 10px 12px; 
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    white-space: nowrap; 
+  }
+  .table tbody td {
+    color: var(--text-secondary-color);
+    vertical-align: middle;
+    padding: 10px 12px; 
+    font-size: var(--font-size-sm); 
+    border-top: 1px solid var(--bbva-grey-200); /* Líneas más sutiles entre filas */
+  }
+  .table tbody tr:first-child td {
+    border-top: none; /* Sin borde superior en la primera fila del body */
+  }
+  .table tbody tr:hover {
+    background-color: var(--bbva-aqua-white); 
+    transition: background-color 0.2s ease;
+  }
+  .table .badge { 
+    font-size: var(--font-size-xs); 
+    padding: 0.35em 0.6em; 
+    font-weight: 500;
+  }
+  .badge.bg-primary-bbva { 
+    background-color: var(--bbva-medium-blue);
+    color: var(--bbva-white);
+  }
+  .badge.bg-secondary-bbva { 
+    background-color: var(--bbva-grey-400);
+    color: var(--bbva-grey-700); 
+  }
+  .table .btn-sm {
+    padding: 0.25rem 0.5rem; 
+    font-size: var(--font-size-xs);
+  }
+
+  /* Modales Generales */
+  .modal-content {
+    border-radius: var(--border-radius-large);
+    border: none;
+    box-shadow: var(--shadow-large); /* Sombra más pronunciada para modales */
+  }
+  .modal-header {
+    background-color: var(--primary-color);
+    color: var(--text-on-primary-bg);
+    border-bottom: none;
+    padding: 1rem 1.25rem; 
+    border-top-left-radius: var(--border-radius-large);
+    border-top-right-radius: var(--border-radius-large);
+  }
+  .modal-header .btn-close { 
+    filter: invert(1) grayscale(100%) brightness(200%); 
+  }
+  .modal-title {
+    font-weight: 600;
+    font-size: var(--font-size-lg); 
+  }
+  .modal-body {
+    padding: 1.25rem; 
+    font-size: var(--font-size-sm);
+  }
+  .modal-footer {
+    border-top: 1px solid var(--border-color);
+    padding: 1rem 1.25rem; 
+    background-color: var(--bbva-grey-100); /* Fondo ligero para el footer del modal */
+    border-bottom-left-radius: var(--border-radius-large);
+    border-bottom-right-radius: var(--border-radius-large);
+  }
+
+  /* Footer */
+  .app-footer {
+    background-color: var(--bbva-dominant-blue); /* Color dominante para el footer */
+    color: var(--bbva-white);      
+    font-size: var(--font-size-sm); 
+    border-top: 1px solid var(--bbva-core-dark-blue); /* Borde superior más oscuro */
+    width: 100%;
+    padding: 0.8rem 1.5rem; 
+    margin-top: auto; 
+    text-align: center; 
+  }
+  .app-footer p {
+    margin-bottom: 0; 
+    display: inline; 
+    opacity: 0.9;
+  }
+
+  /* Utilidades de texto */
+  .text-primary-bbva { color: var(--bbva-core-blue) !important; }
+  .text-muted { color: var(--bbva-grey-500) !important; }
+
+  /* Cards */
+  .card {
+    border: 1px solid var(--bbva-grey-200);
+    border-radius: var(--border-radius-large);
+    box-shadow: var(--shadow-light);
+    background-color: var(--bbva-white);
+  }
+  .card-header {
+    background-color: var(--bbva-grey-100);
+    border-bottom: 1px solid var(--bbva-grey-200);
+    padding: 0.75rem 1.25rem;
+    font-weight: 600;
+    color: var(--bbva-core-dark-blue);
+  }
+  .card-body {
+    padding: 1.25rem;
+  }
+  .card-footer {
+    background-color: var(--bbva-grey-100);
+    border-top: 1px solid var(--bbva-grey-200);
+    padding: 0.75rem 1.25rem;
+  }
+  
+  /* Scrollbar personalizado (sutil) */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--bbva-grey-100);
+    border-radius: 10px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--bbva-grey-300);
+    border-radius: 10px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--bbva-grey-400);
+  }
+
+</style>

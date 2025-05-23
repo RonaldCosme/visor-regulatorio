@@ -1,0 +1,82 @@
+<style>
+  /* Client/css/styleLoginRegister.css.html */
+
+  .auth-form-container {
+    background-color: var(--bbva-white);
+    padding: 35px 40px; /* Aumentar padding */
+    border-radius: var(--border-radius-base);
+    box-shadow: var(--shadow-medium);
+    width: 100%;
+    max-width: 480px; /* Aumentar ancho máximo */
+    margin: 20px auto; 
+    animation-name: fadeInUp; 
+    animation-duration: 0.5s; 
+  }
+
+  @media (min-width: 576px) {
+    .auth-form-container {
+      padding: 40px 50px; /* Aumentar padding en pantallas más grandes */
+    }
+  }
+
+  .auth-form-container h1, 
+  .auth-form-container h2 {
+    color: var(--primary-color);
+    margin-bottom: 10px; /* Aumentar margen */
+    font-weight: 600;
+    text-align: center;
+    font-size: 1.65rem; /* Aumentar tamaño del título */
+  }
+
+  .auth-form-container .auth-logo {
+    display: block;
+    margin: 0 auto 25px auto; /* Aumentar margen inferior */
+    max-height: 45px; /* Aumentar tamaño del logo */
+    transition: transform 0.3s ease;
+  }
+  .auth-form-container .auth-logo:hover {
+    transform: scale(1.05);
+  }
+
+  .auth-form-container .text-muted {
+    margin-bottom: 30px; /* Aumentar margen inferior */
+    font-size: var(--font-size-sm); /* Usar variable de tamaño */
+    color: var(--text-secondary-color);
+    text-align: center;
+  }
+  .auth-form-container .form-label {
+    font-weight: 500;
+    font-size: var(--font-size-sm);
+  }
+
+  /* Estilo para el toggle de contraseña si lo implementas */
+  .password-toggle-group {
+    position: relative;
+  }
+  .password-toggle-group .form-control {
+    padding-right: 3rem; /* Aumentar espacio para el ícono */
+  }
+  .password-toggle-btn {
+    position: absolute;
+    top: 50%;
+    right: 0.6rem; /* Ajustar posición */
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    color: var(--bbva-grey-500);
+    cursor: pointer;
+    padding: 0.4rem 0.8rem; /* Aumentar padding */
+    line-height: 1; 
+  }
+  .password-toggle-btn:hover {
+    color: var(--bbva-medium-blue);
+  }
+  .password-toggle-btn:focus {
+    outline: none;
+    box-shadow: none;
+  }
+  .password-toggle-btn i {
+    font-size: 1.1rem; /* Aumentar tamaño del ícono */
+  }
+
+</style>
